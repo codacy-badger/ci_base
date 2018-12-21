@@ -2,7 +2,7 @@
 # CI Hello World
 #
 # Copyright (C) 2017 Assured Information Security, Inc.
-# Author: Rian Quinn        <quinnr@ainfosec.com>
+# Author: Valentin Dumas        <sp4rk76@gmail.com>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -192,9 +192,9 @@ matrix:
           - g++-6
       coverity_scan:
         project:
-          name: "ainfosec/ci_helloworld"
+          name: "valentindumas/ci_base"
           description: "A simple example of how to setup a complete CI environment for C and C++"
-        notification_email: rianquinn@gmail.com
+        notification_email: sp4rk76@gmail.com
         build_command_prepend: "cmake -DCMAKE_CXX_COMPILER=g++-6 .."
         build_command: "make"
         branch_pattern: master
