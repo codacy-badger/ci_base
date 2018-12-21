@@ -25,14 +25,16 @@
 #include <producer.h>
 #include <consumer.h>
 
-int
-MAIN(int argc, char *argv[])
+int MAIN(int argc, char *argv[])
 {
     (void) argc;
     (void) argv;
 
     producer p{};
     consumer c{&p};
+
+	std::cout << "Setup status: SUCCESS" << std::endl;
+	std::cin.get();
 
     return 0;
 }
