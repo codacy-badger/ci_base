@@ -33,8 +33,8 @@ int MAIN(int argc, char *argv[])
     producer p{};
     consumer c{&p};
 
-	std::cout << "Setup status: SUCCESS" << std::endl;
-	std::cin.get();
+    std::cout << "Setup status: SUCCESS" << std::endl;
+    std::cin.get();
 
     return 0;
 }
