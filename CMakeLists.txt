@@ -322,6 +322,6 @@ macro(do_test str)
     target_compile_definitions(test_${str} PRIVATE VIRTUAL=virtual)
 endmacro(do_test)
 
-do_test(main)
+# do_test(main)
 do_test(producer)
 do_test(consumer)
