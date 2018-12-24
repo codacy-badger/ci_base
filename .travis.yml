@@ -29,6 +29,13 @@ language: cpp
 dist: trusty
 
 #
+# Tokens
+#
+env:
+  global:
+    - secure: "UmkA9grulAdXMK8lJKhMQbEDoqqyhtdDxVgvFRU7AELpBdkUu8jlQ4UOGyzpzxs9m9C+5cVYNutvBQQ4hTMdGYz8+GJRsGgmaHal2XW3UT344EYOTVw+BQLb8ej6s+EA96SK2iv7m9EyOSxixpTOK5N5TfHYr5UUl8Zce31amuAhGahuENuHD95OuXoDVZFMTwOoGWDCDx/nRt/y9uq15PRmq7IWrbiCN3n7TjgaiBFdIo4SNl70kMXiHcvJGXvTStA7ULWRgbe8PwGTNo6TyI5DKYwOM7pG/ibS3AaQprqNTeznzeoaqVonb2YgptZJrW7K/IpdfcTRvnIjQbeVe5wrucaDRNduojQkm+e2jf44dhu95xNVG8Flpw8KuGHrCDhyFpwa9gc8tlt84x8d1tfPVlkFVQqYrcldmjI+zZh35wF/wkGWQ12BtaO40TehmIv/rPz7miZKTMqsKlws3L0NEBoBlbysh+KSGGP6FPFBq/lijayyQxImKQfJFtb6XL5EXgccNL+8aAOY96EPuMmvPk43EXzEL/TKUZN1A2ZnGVRqkm2WlMO/0DlJtJorzN0lyas51nvGGxrZG19XzwunElJM5HsdhTtl4TE5YimHtK2OrPtBDtI/MOUMh54YDUqZE9HOxCRPhT1o3G0+/hk25Y3CgIk44La/feEZaDs="
+
+#
 # Build Dependencies
 #
 before_script:
@@ -169,6 +176,32 @@ matrix:
       - cmake -DENABLE_CPPCHECK=ON -DCMAKE_CXX_COMPILER="g++-6" ..
       - make
       - make check
+
+  #
+  # Coverity Scan
+  #
+  - os: linux
+    env:
+      - TEST="Coverity Scan"
+
+    before_install:
+      - echo -n | openssl s_client -connect https://scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
+
+    addons:
+      apt:
+        sources:
+          - ubuntu-toolchain-r-test
+        packages:
+          - gcc-6
+          - g++-6
+      coverity_scan:
+        project:
+          name: "ValentinDumas/ci_base"
+          description: "A simple example of how to setup a complete CI environment for C and C++"
+        notification_email: sp4rk76@gmail.com
+        build_command_prepend: "cmake -DCMAKE_CXX_COMPILER=g++-6 .."
+        build_command: "make"
+        branch_pattern: master
 
   #
   # Codecov
