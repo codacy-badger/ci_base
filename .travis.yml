@@ -180,28 +180,28 @@ matrix:
   #
   # Coverity Scan
   #
-  - os: linux
-    env:
-      - TEST="Coverity Scan"
-
-    before_install:
-      - echo -n | openssl s_client -connect https://scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
-
-    addons:
-      apt:
-        sources:
-          - ubuntu-toolchain-r-test
-        packages:
-          - gcc-6
-          - g++-6
-      coverity_scan:
-        project:
-          name: "ValentinDumas/ci_base"
-          description: "A simple example of how to setup a complete CI environment for C and C++"
-        notification_email: sp4rk76@gmail.com
-        build_command_prepend: "cmake -DCMAKE_CXX_COMPILER=g++-6 .."
-        build_command: "make"
-        branch_pattern: master
+#  - os: linux
+#    env:
+#      - TEST="Coverity Scan"
+#
+#    before_install:
+#      - echo -n | openssl s_client -connect https://scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
+#
+#    addons:
+#      apt:
+#        sources:
+#          - ubuntu-toolchain-r-test
+#        packages:
+#          - gcc-6
+#          - g++-6
+#      coverity_scan:
+#        project:
+#          name: "ValentinDumas/ci_base"
+#          description: "A simple example of how to setup a complete CI environment for C and C++"
+#        notification_email: sp4rk76@gmail.com
+#        build_command_prepend: "cmake -DCMAKE_CXX_COMPILER=g++-6 .."
+#        build_command: "make"
+#        branch_pattern: master
 
   #
   # Codecov
