@@ -35,7 +35,7 @@ int MAIN(int argc, char *argv[])
     consumer c{&p};
 
     std::cout << "Setup status: SUCCESS" << std::endl;
-    std::cin.get();
+    // std::cin.get();
 
     return 0;
 }

@@ -283,7 +283,7 @@ include(CTest)
 add_library(test_catch STATIC test/test.cpp)
 add_dependencies(test_catch catch)
 
-add_library(business_logic STATIC src/main.cpp)
+add_library(business_logic STATIC src/main.cpp include/nottested.h)
 add_dependencies(business_logic gsl)
 target_compile_definitions(business_logic PRIVATE VIRTUAL=virtual MAIN=unittest_main)
 
