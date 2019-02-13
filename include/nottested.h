@@ -6,9 +6,12 @@
 #define CI_BASE_NOTTESTED_H
 
 /** This method is not tested ! */
+int x = 0;
+
 int hello()
 {
-    return 2;
+    x = x+1;
+    return x;
 }
 
 #endif //CI_BASE_NOTTESTED_H
