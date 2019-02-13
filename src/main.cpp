@@ -24,7 +24,6 @@
 
 #include <producer.h>
 #include <consumer.h>
-#include <nottested.h>
 
 /// Main program function !!
 int MAIN(int argc, char *argv[])
@@ -37,9 +36,6 @@ int MAIN(int argc, char *argv[])
 
     std::cout << "Setup status: SUCCESS" << std::endl;
     // std::cin.get();
-
-    int a = hello();
-    std::cout << "A = " << a << std::endl;
 
     return 0;
 }
